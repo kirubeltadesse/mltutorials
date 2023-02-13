@@ -7,9 +7,12 @@ def sparse_matrix_multiplication(matrix_a, matrix_b):
     if len(matrix_a[0]) != len(matrix_b):
         return [[]]
 
+    # get the diction of the values in the Matrix
     sparse_a = get_dict_of_nonzero_cells(matrix_a)
     sparse_b = get_dict_of_nonzero_cells(matrix_b)
 
+    # creating a result matrix based on the length of the input matrix
+    # [ inside_length for _ outside length  ] 
     matrix_c = [[0] * len(matrix_b[0]) for _ in range(len(matrix_a))]
 
     for i, k in sparse_a.keys():
@@ -20,6 +23,8 @@ def sparse_matrix_multiplication(matrix_a, matrix_b):
 
 def get_dict_of_nonzero_cells(matrix):
     get_dict_of_nonzero_cells = {}
+
+    # key = (i, j), value = matrix[i][j]
 
     for i in range(len(matrix)):
         for j in range(len(matrix[0])):
